@@ -71,13 +71,7 @@ public class Sick implements Comparable<Sick> {
      * 
      * @param args Los argumentos que se reciben desde la línea de comandos
      */
-    public static void main(String[] args) {
-        Sick primero = new Sick("A", "Dolor de cabeza", "Sebastian");
-        Sick segundo = new Sick("E","Le falta una pierna","Juan Pedro");
-        System.out.println(primero);
-        System.out.println(segundo);
-        System.out.println(primero.compareTo(segundo));
-    }
+   
 
 }
 

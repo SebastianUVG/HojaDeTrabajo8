@@ -60,6 +60,8 @@ public class App
 
                 if (respuesta == 1){
                     System.out.println(bucketList);
+
+                    
                 }else if (respuesta == 2){
                     System.out.println("El paciente con mayor prioridad es: ");
                     try {
