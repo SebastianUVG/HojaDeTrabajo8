@@ -33,14 +33,46 @@ public class App
                     //System.out.println(paciente);
                     bucketList.add(paciente);
                 }
+                
             }
             System.out.println(bucketList);
+            boolean bandera = true;
+
+
+            while (bandera ){
+                System.out.println("Opciones a realizar: ");
+                System.out.println("1. Ver lista de pacientes");
+                System.out.println("2. Examinar al paciente con mayor prioridad.");
+                System.out.println("3. Salir del programa");
+                int respuesta = sc.nextInt();
+
+                if (respuesta == 1){
+                    System.out.println(bucketList);
+                }else if (respuesta == 2){
+                    System.out.println("El paciente con mayor prioridad es: ");
+                    try {
+                        System.out.println(bucketList.remove());
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        System.out.println("La lista se encuentra vacia");
+                        break;
+                    }
+                    
+                }else if (respuesta == 3){
+                    bandera = false;
+                    System.out.println("Saliendo del programa");
+                }else{
+                    System.out.println("Opcion no valida");
+                    bandera = false;
+                }
+
+            }
+            //System.out.println(bucketList);
         } catch (IOException e) {
             // TODO: handle exception
             System.out.println("Error al leer el archivo");
         }
 
-        
     }
 
 
