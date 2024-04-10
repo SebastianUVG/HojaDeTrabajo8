@@ -1,3 +1,9 @@
+/**
+ * Esta es la clase principal de la aplicación, se encarga de leer los datos
+ * del archivo de pacientes y de presentar las opciones para el usuario.
+ * @author Sebastian Garcia
+ * @version 1.0
+ */
 package uvg;
 
 import java.io.BufferedReader;
@@ -7,22 +13,29 @@ import java.util.PriorityQueue;
 import java.util.Scanner;
 
 /**
- * Hello world!
- *
+ * Esta clase es el punto de entrada de la aplicación, aca se encarga
+ * de leer los datos del archivo de pacientes y de presentar las opciones
+ * para el usuario. 
  */
 public class App 
 {
+    /**
+     * Método principal de la aplicación, aca se encarga de leer los datos
+     * del archivo de pacientes y de presentar las opciones para el usuario.
+     * @param args Los argumentos que se reciben desde la linea de comandos
+     */
     public static void main( String[] args )
     {
-        NewInterface<Sick> bucketList = PriorityQueueFactory.createQueue("java");
+        //Se solicita al usuario que ingrese el nombre del archivo
         Scanner sc = new Scanner(System.in);
-        System.out.println( "--------------------Ficha de enfermos--------------------" );
-        System.out.println("Por favor ingrese el nombre del documento de pacientes que quiere abrir (pacientes.txt):");
+        System.out.println("Ingrese el nombre del archivo de pacientes:");
         String lista = sc.nextLine();
-        String rutaArchivo = "C:\\Users\\sebas\\OneDrive\\Escritorio\\Github\\EstructuraDeDatos\\HojaDeTrabajo8\\hoja8\\src\\main\\java\\uvg\\"+lista;
 
+        //Se abre el archivo y se leen los datos
+        String rutaArchivo = "C:\\Users\\sebas\\OneDrive\\Escritorio\\Github\\EstructuraDeDatos\\HojaDeTrabajo8\\hoja8\\src\\main\\java\\uvg\\"+lista;
         try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
             String datos;
+            NewInterface<Sick> bucketList = PriorityQueueFactory.createQueue("java");
             while ((datos = br.readLine()) != null) {
                 String[] partes = datos.split(",");
                 if (partes.length == 3) {
@@ -30,15 +43,14 @@ public class App
                     String symptoms = partes[1].trim();
                     String priority = partes[2].trim();
                     Sick paciente = new Sick(priority, symptoms, name);
-                    //System.out.println(paciente);
                     bucketList.add(paciente);
                 }
-                
             }
+
+            //Se muestra la lista de pacientes y se solicita las opciones al usuario
+            System.out.println("La lista de pacientes es:");
             System.out.println(bucketList);
             boolean bandera = true;
-
-
             while (bandera ){
                 System.out.println("Opciones a realizar: ");
                 System.out.println("1. Ver lista de pacientes");
@@ -57,7 +69,7 @@ public class App
                         System.out.println("La lista se encuentra vacia");
                         break;
                     }
-                    
+
                 }else if (respuesta == 3){
                     bandera = false;
                     System.out.println("Saliendo del programa");
@@ -67,7 +79,7 @@ public class App
                 }
 
             }
-            //System.out.println(bucketList);
+
         } catch (IOException e) {
             // TODO: handle exception
             System.out.println("Error al leer el archivo");
@@ -75,8 +87,17 @@ public class App
 
     }
 
-
+    /**
+     * Esta clase es una factoría que se encarga de crear una PriorityQueue
+     * dependiendo del tipo que se le pase como parametro
+     */
     private static class PriorityQueueFactory{
+        /**
+         * Método que se encarga de crear una PriorityQueue dependiendo del tipo
+         * que se le pase como parametro.
+         * @param type El tipo de PriorityQueue que se quiere crear
+         * @return Devuelve una PriorityQueue del tipo especificado
+         */
         public static NewInterface<Sick> createQueue(String type){
             if (type.equals("java")) {
                 return new JavaPriorityQueue<Sick>();
@@ -86,3 +107,4 @@ public class App
         }
     }
 }
+

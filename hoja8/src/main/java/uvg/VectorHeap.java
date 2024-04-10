@@ -1,5 +1,16 @@
 package uvg;
 
+/*
+ * Este programa esta inspirado en el programa que brindo el profesro en 
+ * la clase para realizar dicho programa.  
+ * @author MICHAELLE ALEXANDER PEREZ RIZ
+ */
+/** @author MICHAELLE ALEXANDER PEREZ RIZ
+ * @author Sebastian Garcia
+ * @version 1.0
+ */
+
+ 
 import java.util.Vector;
 
 public class VectorHeap<E extends Comparable<E>> implements NewInterface<E> {

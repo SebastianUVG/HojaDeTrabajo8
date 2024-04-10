@@ -1,3 +1,8 @@
+//**    Este programa esta inspirado en el programa que brindo el profesor en la clase de Estructuras de datos. para realizar dicho programa
+/** @author MICHAELLE ALEXANDER PEREZ RIZ 
+ * @author Sebastian Garcia
+ * @version 1.0
+*/
 package uvg;
 
 import java.util.PriorityQueue;

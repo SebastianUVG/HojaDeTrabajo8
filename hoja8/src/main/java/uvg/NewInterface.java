@@ -1,3 +1,8 @@
+/**@author Sebastian Garcia
+ * interfaz a utilizar
+ */
+
+
 package uvg;
 
 public interface NewInterface <E extends Comparable<E>>{
